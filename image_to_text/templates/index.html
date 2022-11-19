@@ -4,7 +4,7 @@
      <h2 class="my-4">Upload an image</h2>
      <form method="post" enctype="multipart/form-data">
        {% csrf_token %}
-           <input type="file" name="upload" accept=".jpg, .png">
+           <input type="file" name="upload" accept=".jpg, .png, .webp">
            <br>
            <button class="btn btn-dark my-4" type="submit">Submit</button>
      </form>
@@ -16,9 +16,11 @@
        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
         <img src="{{ file_url }}" class="img-fluid">
         <br>
-         <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+     <h2 class="my-4">Derived text</h2>
+        <p>{{ text }}</p>
+        
        {% else %}
-       <p>No movies scripts added.</p>
+       <p>No image uploaded. Upload an image!!!</p>
        {% endif %}
      </div>
 

@@ -1,7 +1,11 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import  render
+from django.core.files.storage import FileSystemStorage
 
 def index(request):
-     template = loader.get_template('index.html')
-     context = {}
-     return HttpResponse(template.render(context, request))
+    if request.method == 'POST' and request.FILES['upload']:
+        upload = request.FILES['upload']
+        fss = FileSystemStorage()
+        file = fss.save(upload.name, upload)
+        file_url = fss.url(file)
+        return render(request, 'index.html', {'file_url': file_url})
+    return render(request, 'index.html')

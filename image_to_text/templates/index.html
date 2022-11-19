@@ -16,7 +16,10 @@
        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
         <img src="{{ file_url }}" class="img-fluid">
         <br>
-     <h2 class="my-4">Derived text</h2>
+     <h2 class="my-4">Derived text:</h2>
+        {% if text == '' %}
+            <p>No text detected :(</p>
+        {% endif %}
         <p>{{ text }}</p>
         
        {% else %}
